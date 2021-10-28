@@ -1,5 +1,3 @@
-< reference type='Cypress' />
-
 context('Actions', () => {
     beforeEach(() => {
         cy.visit('https://testyourlog.in/example/index.html')

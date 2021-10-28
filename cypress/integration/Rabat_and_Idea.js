@@ -1,7 +1,3 @@
-it('Visit Naturativ', () =>{
-    cy.visit('https://www.naturativ.pl/')
-});
-
 it('Scroll to the rabat formula', () =>{
     cy.visit('https://www.naturativ.pl/')
     cy.scrollTo('bottom', {duration: 1500})
