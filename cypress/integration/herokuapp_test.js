@@ -17,7 +17,7 @@ describe('Go to herokuapp', () => {
   it('Checking checkboxes', () => { 
     cy.get('a').contains('Checkboxes')
         .click()
-    cy.get(HEROKUAPP_SELECTORS.CHECKBOX)
+    cy.get(HEROKUAPP_SELECTORS.CHECKBOX_1)
         .as('checkboxes')
         .check()
     cy.get('@checkboxes')
@@ -67,5 +67,39 @@ describe('Go to herokuapp', () => {
       const randomText = $randomText.text()
       expect(randomText).to.match(/.*/)
       });
+  });
+
+  it('Checking Dynamic Controls', () => {
+    cy.get('a').contains('Dynamic Controls')
+      .click()
+    cy.get(HEROKUAPP_SELECTORS.CHECKBOX_2)
+      .check()
+    cy.get('button').contains('Remove')
+      .click()
+    cy.intercept('GET','http://the-internet.herokuapp.com/img/ajax-loader.gif')
+    cy.get('[id = message]').contains(`It's gone!`)
+      .should('be.visible')
+    cy.get('button').contains('Add')
+      .click()
+    cy.get('button').contains('Enable')
+      .click()
+    cy.get('[type = text]').type('test')
+  });
+  
+  it('Checking Dynamic Loading', () => {
+    cy.get('a').contains('Dynamic Loading')
+      .click()
+    cy.get(HEROKUAPP_SELECTORS.DYNAMIC_LOADING_1)
+      .click()
+    cy.get('button').contains('Start')
+      .click()
+    cy.checkText()
+      .should('be.visible')
+    cy.visit('http://the-internet.herokuapp.com/dynamic_loading')
+    cy.get(HEROKUAPP_SELECTORS.DYNAMIC_LOADING_2)
+      .click()
+    cy.get('button').contains('Start')
+      .click()
+    cy.checkText()
   });
 });

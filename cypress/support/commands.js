@@ -48,6 +48,10 @@ Cypress.Commands.add('dropBtoA', () => {
       });
 });
 
+Cypress.Commands.add('checkText', () => {
+    cy.get(HEROKUAPP_SELECTORS.FINISH_TEXT, { timeout: 10000})
+        .should('exist')
+})
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Cypress.Commands.add('login', (username, password) => {
