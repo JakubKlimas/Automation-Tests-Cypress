@@ -80,3 +80,9 @@ Cypress.Commands.add('clicking2', password => {
   cy.get('input[type = password]').click('bottomRight').type(password).should('have.value', password).clear();
   cy.get('div[class = column]').click('left').type(password).should('not.have.value', password);
 });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Cypress.Commands.add('checkHerokuA11y', path => {
+  cy.visit('http://the-internet.herokuapp.com/');
+  cy.injectAxe();
+  cy.checkA11y();
+});
