@@ -1,1 +1,9 @@
-{}
+{
+    "baseUrl": "http://example.com",
+  "video": false,
+  "defaultCommandTimeout": 10000,
+  "env": {
+    "username": "admin",
+    "password": "admin"
+  }
+}
