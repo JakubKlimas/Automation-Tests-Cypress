@@ -1,5 +1,28 @@
 {
   "devDependencies": {
-    "cypress": "^8.7.0"
-  }
+    "axe-core": "^4.3.5",
+    "cypress": "^8.7.0",
+    "cypress-axe": "^0.13.0",
+    "husky": "4.3.8",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1"
+  },
+  "scripts": {
+    "cy:run:heroku": "npx cypress run --env configFile=heroku",
+    "cy:open:heroku": "npx cypress open --env configFile=heroku",
+    "cy:prettier": "prettier --write \"cypress/**/*.js\"",
+    "cy:lint": "eslint cypress/**/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "cypress/**/*.js": [
+      "eslint",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {}
 }
